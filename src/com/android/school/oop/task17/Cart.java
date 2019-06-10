@@ -34,32 +34,85 @@ public class Cart implements CartInterface {
         this.plants.addAll(cart.plants);
     }
 
+/*
     @Override
     public Plant extract(int plantIndex) {
-        Iterator iterator = this.plants.iterator();
+        Iterator<Plant> iterator = this.plants.iterator();
         while(iterator.hasNext()){
+            Plant plant = iterator.next();
+            if(plant.)
+                String s = i.next(); // must be called before you can call i.remove()
+                // Do something
+                i.remove();
 
         }
         return null;
     }
+*/
+
+
+    @Override
+    public Plant extract(int plantIndex) {
+        Plant plant = null;
+
+        if (plantIndex > this.plants.size() - 1 || plantIndex < 0) {
+            System.out.println("Error!");
+        } else {
+            plant = this.plants.get(plantIndex);
+            if (plant != null) {
+                this.plants.remove(plantIndex);
+            }
+        }
+
+        return plant;
+    }
 
     @Override
     public List<Plant> extractAll() {
-        return null;
+        List<Plant> secondList = this.plants;
+        this.plants = null;
+        return secondList;
     }
 
     @Override
     public List<Fruit> extractAllFruits() {
-        return null;
+
+        List<Fruit> fruitsList = new ArrayList<>();
+
+        for (Plant plant : this.plants) {
+            if(plant instanceof Fruit){
+                fruitsList.add((Fruit) plant);
+            }
+        }
+
+        this.plants.removeAll(fruitsList);
+
+        return fruitsList;
     }
 
     @Override
     public List<Vegetable> extractAllVegetables() {
-        return null;
+        List<Vegetable> vegetablesList = new ArrayList<>();
+
+        for (Plant plant : this.plants) {
+            if(plant instanceof Vegetable){
+                vegetablesList.add((Vegetable) plant);
+            }
+        }
+
+        this.plants.removeAll(vegetablesList);
+
+        return vegetablesList;
     }
 
     @Override
     public double getWeight() {
-        return 0;
+        double cartWeight = 0.0;
+
+        for (Plant plant : this.plants) {
+            cartWeight += plant.getWeight();
+        }
+
+        return cartWeight;
     }
 }
