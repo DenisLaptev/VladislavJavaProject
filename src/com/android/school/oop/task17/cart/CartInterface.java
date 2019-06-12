@@ -1,5 +1,6 @@
-package com.android.school.oop.task17;
+package com.android.school.oop.task17.cart;
 
+import com.android.school.oop.task17.cart.Cart;
 import com.android.school.oop.task17.model.Fruit;
 import com.android.school.oop.task17.model.Plant;
 import com.android.school.oop.task17.model.Vegetable;

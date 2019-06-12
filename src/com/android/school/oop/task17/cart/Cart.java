@@ -1,11 +1,10 @@
-package com.android.school.oop.task17;
+package com.android.school.oop.task17.cart;
 
 import com.android.school.oop.task17.model.Fruit;
 import com.android.school.oop.task17.model.Plant;
 import com.android.school.oop.task17.model.Vegetable;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Cart implements CartInterface {
@@ -114,5 +113,13 @@ public class Cart implements CartInterface {
         }
 
         return cartWeight;
+    }
+
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
     }
 }
